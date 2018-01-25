@@ -1,0 +1,6 @@
+/data/*
+*.pkl
+/.ipynb_checkpoints/*
+/__pycache__/*
+/docs/*
+/siri/*
