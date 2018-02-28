@@ -6,10 +6,10 @@ To run these notebooks you need Python 3.5+ with all the necessary packages, Jup
 
 ### Downloads and installs
 1. Install Anaconda3 - this will give you all the basic scipy libraries (pandas, matplotlib, seaborn...) and Jupyter notebook. I'm using version 4.4, can't vouch for 5+. Get the right version [here](https://repo.continuum.io/archive/), make sure you're installing Anaconda**3** and not **2**
-2. You might need to update some libraries (`conda update libname [-c conda-forge]`)
-3. Install [partridge](https://github.com/remix/partridge)
-4. (for notebook 3) Install [networkx](https://networkx.github.io/)
-5. (for notebook 3) Install [peartree](https://github.com/kuanb/peartree)
+1. You might need to update some libraries (`conda update libname [-c conda-forge]`)
+1. Install [partridge](https://github.com/remix/partridge)
+1. (for notebook 3) Install [networkx](https://networkx.github.io/)
+1. (for notebook 3) Install [peartree](https://github.com/kuanb/peartree)
 *In the near-ish future, I'll try to publish a docker container and/or a spec-file for creating an environment more easily. A [binder](https://mybinder.org/) might pop-up at anytime too.*
 
 ### Run
