@@ -15,53 +15,53 @@ TARIFF_TXT_NAME = 'Tariff.txt'
 TARIFF_TO_REFORM_ZONE = 'StationToReformZone.txt'
 
 def ftp_connect():
-	conn = FTP(MOT_FTP)
-	conn.login()
-	return conn
+    conn = FTP(MOT_FTP)
+    conn.login()
+    return conn
 
 def get_ftp_dir(conn = None):
-	close = False
+    close = False
 
-	if conn is None:
-		conn = ftp_connect()
-		close = True
+    if conn is None:
+        conn = ftp_connect()
+        close = True
 
-	ftp_dir = []
-	conn.retrlines('LIST', lambda x: ftp_dir.append(x)) 
+    ftp_dir = []
+    conn.retrlines('LIST', lambda x: ftp_dir.append(x)) 
 
-	return ftp_dir
+    return ftp_dir
 
 def get_uptodateness(ftp_dir, file_name = GTFS_FILE_NAME, local_path = LOCAL_ZIP_PATH):
-	# returns how many days behind the local file is compared to the ftp file
-	# based on file modified dates
-	RE_FTP_LINE = re.compile(
-	    r'(?P<date>\d+-\d+-\d+\s+\d+:\d+[APM]{2})\s+(?P<size><DIR>|[0-9]+)\s+(?P<file_name>.*)')
-	f = [re.findall(RE_FTP_LINE, line) for line in ftp_dir]
-	f_dates = {t[0][2]: datetime.datetime.strptime(t[0][0], "%m-%d-%y  %H:%M%p") for t in f}
+    # returns how many days behind the local file is compared to the ftp file
+    # based on file modified dates
+    RE_FTP_LINE = re.compile(
+        r'(?P<date>\d+-\d+-\d+\s+\d+:\d+[APM]{2})\s+(?P<size><DIR>|[0-9]+)\s+(?P<file_name>.*)')
+    f = [re.findall(RE_FTP_LINE, line) for line in ftp_dir]
+    f_dates = {t[0][2]: datetime.datetime.strptime(t[0][0], "%m-%d-%y  %H:%M%p") for t in f}
 
-	ftp_date = f_dates[file_name]
+    ftp_date = f_dates[file_name]
 
-	our_date = datetime.datetime.fromtimestamp(os.path.getmtime(local_path))
-	return  (ftp_date - our_date).days
+    our_date = datetime.datetime.fromtimestamp(os.path.getmtime(local_path))
+    return  (ftp_date - our_date).days
 
 def get_ftp_file(conn=None, file_name = GTFS_FILE_NAME, local_path = LOCAL_ZIP_PATH, force=False):
-	close = False
+    close = False
 
-	if conn is None:
-		conn = ftp_connect()
-		close = True
+    if conn is None:
+        conn = ftp_connect()
+        close = True
 
-	if not force and os.path.exists(local_path):
-		raise FileExistsError(f'Local file \'{local_path}\' already exists, consider changing name for archiving purposes, or use the `force` flag') 
+    if not force and os.path.exists(local_path):
+        raise FileExistsError(f'Local file \'{local_path}\' already exists, consider changing name for archiving purposes, or use the `force` flag') 
 
-	print(f'Downloading {file_name}...')
+    print(f'Downloading {file_name}...')
 
-	with open(local_path, 'wb') as fh:
-		conn.retrbinary('RETR %s' % (file_name), fh.write)
-
-	if close: conn.close()
-
-	return True
+    with open(local_path, 'wb') as fh:
+        conn.retrbinary('RETR %s' % (file_name), fh.write)
+    print('Done.')
+    
+    if close: conn.close()
+    return True
 
 def get_zones_df(local_tariff_zip_path):
     # not a true csv, so we need to jiggle it a bit, hence the 'EXTRA' field
@@ -96,7 +96,7 @@ def get_partridge_feed_by_date(zip_path, date):
     
 def get_tidy_feed_df(feed, extra_merges, extra_fields=None):
     # merge selected fields from selected GTFS files in a stated order
-    # perform extra merges with other dataframes
+    # perform extra merges with a list of other dataframes `extra_merges`
     # make categorical fields into pd.Categorical
     # perform transforms (e.g. turn times into timedelta)
     
@@ -147,13 +147,13 @@ def get_tidy_feed_df(feed, extra_merges, extra_fields=None):
 ############
 
 def extract_tariff_df(local_zip_path, tariff_txt_name = TARIFF_TXT_NAME):
-	cols = ['ShareCode','ShareCodeDesc','ZoneCodes','Daily','Weekly','Monthly','FromDate','ToDate', 'EXTRA']
-	with zipfile.ZipFile(local_zip_path) as zf:
-	    tariff_df = (pd.read_csv(zf.open(tariff_txt_name), header=None, skiprows=[0], names = cols)
-	    .drop(columns = ['EXTRA']))
-	# remove ShareCodes which contain multiple zones  e.g. גוש דן מורחב
-	tariff_df = (tariff_df[~ tariff_df.ZoneCodes.str.contains(';')]
-	             .rename(columns = {'ShareCodeDesc': 'zone_name',
-	                               'ZoneCodes': 'zone_id'}))
-	return tariff_df
+    cols = ['ShareCode','ShareCodeDesc','ZoneCodes','Daily','Weekly','Monthly','FromDate','ToDate', 'EXTRA']
+    with zipfile.ZipFile(local_zip_path) as zf:
+        tariff_df = (pd.read_csv(zf.open(tariff_txt_name), header=None, skiprows=[0], names = cols)
+        .drop(columns = ['EXTRA']))
+    # remove ShareCodes which contain multiple zones  e.g. גוש דן מורחב
+    tariff_df = (tariff_df[~ tariff_df.ZoneCodes.str.contains(';')]
+                 .rename(columns = {'ShareCodeDesc': 'zone_name',
+                                   'ZoneCodes': 'zone_id'}))
+    return tariff_df
 
