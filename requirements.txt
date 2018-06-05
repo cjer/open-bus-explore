@@ -2,7 +2,8 @@ pandas
 numpy
 matplotlib
 seaborn
+altair
+networkx
 partridge
 peartree
-networkx
 gtfstk
