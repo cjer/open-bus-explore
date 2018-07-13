@@ -295,8 +295,6 @@ def batch_stats_s3(bucket_name = BUCKET_NAME, output_folder = OUTPUT_DIR,
 
             os.mkdir(output_folder)
             
-
-
         s3 = boto3.resource('s3')
         bucket = s3.Bucket(bucket_name)
 
@@ -314,39 +312,48 @@ def batch_stats_s3(bucket_name = BUCKET_NAME, output_folder = OUTPUT_DIR,
 
         logger.info(f'starting synchronous gtfs file download and stats computation from s3 bucket {bucket_name}')
         for file in valid_files:
-            if file in os.listdir(gtfs_folder):
-                logger.info(f'found file "{file}" in local folder "{gtfs_folder}"')
-                downloaded = False
-            else:
-                logger.info(f'starting file download (key="{file}", local path="{gtfs_folder+file}")')
-                bucket.download_file(file, gtfs_folder+file)
-                logger.debug(f'finished file download (key="{file}", local path="{gtfs_folder+file}")')
-                downloaded = True
-            # TODO: log file size
+
             logger.info(f'extracting date from file name "{file}"')
             date_str = file.split('.')[0]
             date = datetime.datetime.strptime(date_str, '%Y-%m-%d').date()
-            
-            logger.info(f'creating daily partridge feed for file "{gtfs_folder+file}" with date "{date}"')
-            feed = gu.get_partridge_feed_by_date(gtfs_folder+file, date)
-            logger.debug(f'finished creating daily partridge feed for file "{gtfs_folder+file}" with date "{date}"')
-            
-            # TODO: add changing zones from archive            
-            logger.info(f'creating zones DF from "{LOCAL_TARIFF_PATH}"')
-            zones = gu.get_zones_df(LOCAL_TARIFF_PATH)
-            
-            logger.info(f'starting compute_trip_stats_partridge for file "{gtfs_folder+file}" with date "{date}" and zones "{LOCAL_TARIFF_PATH}"')
-            ts = compute_trip_stats_partridge(feed, zones)
-            logger.debug(f'finished compute_trip_stats_partridge for file "{gtfs_folder+file}" with date "{date}" and zones "{LOCAL_TARIFF_PATH}"')
-            # TODO: log this
-            ts['date'] = date_str
-            ts['date'] = pd.Categorical(ts.date)
+
+            trip_stats_output_path = output_folder+date_str+'_trip_stats.pkl.gz'
+            if os.path.exists(trip_stats_output_path):
+                logger.info(f'found trip stats result DF gzipped pickle "{trip_stats_output_path}"')
+                ts = pd.read_pickle(trip_stats_output_path, compression='gzip')
+            else:
+                if file in os.listdir(gtfs_folder):
+                    logger.info(f'found file "{file}" in local folder "{gtfs_folder}"')
+                    downloaded = False
+                else:
+                    logger.info(f'starting file download (key="{file}", local path="{gtfs_folder+file}")')
+                    bucket.download_file(file, gtfs_folder+file)
+                    logger.debug(f'finished file download (key="{file}", local path="{gtfs_folder+file}")')
+                    downloaded = True
+                # TODO: log file size
+                
+                logger.info(f'creating daily partridge feed for file "{gtfs_folder+file}" with date "{date}"')
+                feed = gu.get_partridge_feed_by_date(gtfs_folder+file, date)
+                logger.debug(f'finished creating daily partridge feed for file "{gtfs_folder+file}" with date "{date}"')
+                
+                # TODO: add changing zones from archive            
+                logger.info(f'creating zones DF from "{LOCAL_TARIFF_PATH}"')
+                zones = gu.get_zones_df(LOCAL_TARIFF_PATH)
+                
+                logger.info(f'starting compute_trip_stats_partridge for file "{gtfs_folder+file}" with date "{date}" and zones "{LOCAL_TARIFF_PATH}"')
+                ts = compute_trip_stats_partridge(feed, zones)
+                logger.debug(f'finished compute_trip_stats_partridge for file "{gtfs_folder+file}" with date "{date}" and zones "{LOCAL_TARIFF_PATH}"')
+                # TODO: log this
+                ts['date'] = date_str
+                ts['date'] = pd.Categorical(ts.date)
+
+                logger.info(f'saving trip stats result DF to gzipped pickle "{trip_stats_output_path}"')
+                ts.to_pickle(trip_stats_output_path, compression='gzip')
+                
             #TODO: log more stats
             logger.debug(f'ts.shape={ts.shape}, dc_trip_id={ts.trip_id.nunique()}, dc_route_id={ts.route_id.nunique()}, num_start_zones={ts.start_zone.nunique()}, num_agency={ts.agency_name.nunique()}')
 
-            trip_stats_output_path = output_folder+date_str+'_trip_stats.pkl.gz'
-            logger.info(f'saving trip stats result DF to gzipped pickle "{trip_stats_output_path}"')
-            ts.to_pickle(trip_stats_output_path, compression='gzip')
+
             
             logger.info(f'starting compute_route_stats_base_partridge from trip stats result')
             rs = compute_route_stats_base_partridge(ts)
@@ -356,7 +363,7 @@ def batch_stats_s3(bucket_name = BUCKET_NAME, output_folder = OUTPUT_DIR,
             rs['date'] = pd.Categorical(rs.date)
             
             #TODO: log more stats
-            logger.debug(f'rs.shape={rs.shape}, dc_trip_id={rs.trip_id.nunique()}, dc_route_id={rs.route_id.nunique()}, num_start_zones={rs.start_zone.nunique()}, num_agency={rs.agency_name.nunique()}')
+            logger.debug(f'rs.shape={rs.shape}, num_trips_sum={rs.num_trips.sum()}, dc_route_id={rs.route_id.nunique()}, num_start_zones={rs.start_zone.nunique()}, num_agency={rs.agency_name.nunique()}')
 
             route_stats_output_path = output_folder+date_str+'_route_stats.pkl.gz'
             logger.info(f'saving route stats result DF to gzipped pickle "{route_stats_output_path}"')
