@@ -1,4 +1,5 @@
 /data/*
+/logs/*
 *.pkl
 /.ipynb_checkpoints/*
 /__pycache__/*
