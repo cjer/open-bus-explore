@@ -14,6 +14,9 @@ TARIFF_FILE_NAME = 'Tariff.zip'
 TARIFF_TXT_NAME = 'Tariff.txt'
 TARIFF_TO_REFORM_ZONE = 'StationToReformZone.txt'
 
+RE_FTP_LINE = re.compile(
+    r'(?P<date>\d+-\d+-\d+\s+\d+:\d+[APM]{2})\s+(?P<size><DIR>|[0-9]+)\s+(?P<file_name>.*)')
+    
 def ftp_connect():
     conn = FTP(MOT_FTP)
     conn.login()
@@ -34,8 +37,7 @@ def get_ftp_dir(conn = None):
 def get_uptodateness(ftp_dir, file_name = GTFS_FILE_NAME, local_path = LOCAL_ZIP_PATH):
     # returns how many days behind the local file is compared to the ftp file
     # based on file modified dates
-    RE_FTP_LINE = re.compile(
-        r'(?P<date>\d+-\d+-\d+\s+\d+:\d+[APM]{2})\s+(?P<size><DIR>|[0-9]+)\s+(?P<file_name>.*)')
+
     f = [re.findall(RE_FTP_LINE, line) for line in ftp_dir]
     f_dates = {t[0][2]: datetime.datetime.strptime(t[0][0], "%m-%d-%y  %H:%M%p") for t in f}
 
