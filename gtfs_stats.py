@@ -505,13 +505,15 @@ if __name__ == '__main__':
 # 
 # 1. put this all back into proper documented functions
 # 1. add retries
+# 1. separate to modules - run, conf, stats, utils...
 # 1. integrate with custom day cutoff
-# 1. add stats logging (number of trips, routes, agencies, zones, total distance, etc)
+# 1. add coordinates
 # 1. write tests
 # 1. add split_directions
 # 1. add time between stops - max, min, mean (using delta)
 # 1. add day and night headways and num_trips (maybe noon also)
-# 1. create a function for converting this to a timeseries good for pandas
+# 1. create a function for reading all the pickles and 
+#    make necessary conversions (make it a timeseries good for pandas)
 # 
 # 
 # 
