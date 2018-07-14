@@ -28,8 +28,7 @@ OUTPUT_DIR = 'data/gtfs_stats_MOD/'
 OUTPUT_FILE_NAME_RE = re.compile('^(?P<date_str>[^_]+?)_(?P<type>\w+)\.pkl\.gz')
 
 BUCKET_NAME = 's3.obus.hasadna.org.il'
-#BUCKET_VALID_FILES_RE = re.compile('2018-0[4]-\d\d\.zip')
-BUCKET_VALID_FILES_RE = re.compile('2018-04-01.zip')
+BUCKET_VALID_FILES_RE = re.compile('2018-0[4]-\d\d\.zip')
 STATS_TYPES = ['trip_stats', 'route_stats']
 
 def compute_trip_stats_partridge(feed, zones):
