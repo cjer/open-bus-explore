@@ -28,11 +28,79 @@ OUTPUT_DIR = 'data/gtfs_stats_MOD/'
 OUTPUT_FILE_NAME_RE = re.compile('^(?P<date_str>[^_]+?)_(?P<type>\w+)\.pkl\.gz')
 
 BUCKET_NAME = 's3.obus.hasadna.org.il'
-BUCKET_VALID_FILES_RE = re.compile('2018-0[3]-\d\d\.zip')
-
+#BUCKET_VALID_FILES_RE = re.compile('2018-0[4]-\d\d\.zip')
+BUCKET_VALID_FILES_RE = re.compile('2018-04-01.zip')
 STATS_TYPES = ['trip_stats', 'route_stats']
 
 def compute_trip_stats_partridge(feed, zones):
+    """
+    Parameters
+    ----------
+    feed : partridge feed
+    zones: DataFrame with stop_code to zone_name mapping
+    
+    Returns
+    -------
+    DataFrame with the following columns:
+
+    - ``'trip_id'``
+    - ``'route_id'``
+    - ``'route_short_name'``
+    - ``'route_short_name'``
+    - ``'agency_id'``
+    - ``'agency_name'``
+    - ``'route_long_name'``
+    - ``'route_type'``
+    - ``'direction_id'``
+    - ``'shape_id'``
+    - ``'num_stops'``: number of stops on trip
+    - ``'start_time'``: first departure time of the trip
+    - ``'end_time'``: last departure time of the trip
+    - ``'start_stop_id'``: stop ID of the first stop of the trip
+    - ``'end_stop_id'``: stop ID of the last stop of the trip
+    - ``'start_stop_name'``: stop name of the first stop of the trip
+    - ``'end_stop_name'``: stop name of the last stop of the trip
+    - ``'start_stop_code'``: stop code of the first stop of the trip
+    - ``'end_stop_code'``: stop code of the last stop of the trip
+    - ``'start_zone'``: zone name of the first stop of the trip
+    - ``'end_zone'``: zone name of the last stop of the trip
+    - ``'is_loop'``: 1 if the start and end stop are less than 400m apart and
+      0 otherwise
+    - ``'distance'``: distance of the trip in ``feed.dist_units``;
+      contains all ``np.nan`` entries if ``feed.shapes is None``
+    - ``'duration'``: duration of the trip in hours
+    - ``'speed'``: distance/duration
+
+    TODO: this is not true here, we're only using shape_dist_traveled
+    TODO: implement or drop from docs
+    If ``feed.stop_times`` has a ``shape_dist_traveled`` column with at
+    least one non-NaN value and ``compute_dist_from_shapes == False``,
+    then use that column to compute the distance column.
+    Else if ``feed.shapes is not None``, then compute the distance
+    column using the shapes and Shapely.
+    Otherwise, set the distances to NaN.
+
+    If route IDs are given, then restrict to trips on those routes.
+
+    Notes
+    -----
+    - Assume the following feed attributes are not ``None``:
+
+        * ``feed.trips``
+        * ``feed.routes``
+        * ``feed.stop_times``
+        * ``feed.shapes`` (optionally)
+        * Those used in :func:`.stops.build_geometry_by_stop`
+
+    - Calculating trip distances with ``compute_dist_from_shapes=True``
+      seems pretty accurate.  For example, calculating trip distances on
+      `this Portland feed
+      <https://transitfeeds.com/p/trimet/43/1400947517>`_
+      using ``compute_dist_from_shapes=False`` and
+      ``compute_dist_from_shapes=True``,
+      yields a difference of at most 0.83km from the original values.
+
+    """
     f = feed.trips
     f = (
         f[['route_id', 'trip_id', 'direction_id', 'shape_id']]
@@ -167,6 +235,7 @@ def compute_route_stats_base_partridge(trip_stats_subset,
         - ``'start_zone'``: ``start_zone`` of the first trip for the route
         - ``'end_zone'``: ``end_zone`` of the first trip for the route
         
+        TODO: actually implement split_directions
         If not ``split_directions``, then remove the
         direction_id column and compute each route's stats,
         except for headways, using
@@ -410,6 +479,7 @@ if __name__ == '__main__':
 # TODO
 # 
 # 1. put this all back into proper documented functions
+# 1. add retries
 # 1. integrate with custom day cutoff
 # 1. add stats logging (number of trips, routes, agencies, zones, total distance, etc)
 # 1. write tests
