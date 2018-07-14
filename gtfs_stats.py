@@ -11,6 +11,7 @@
 import pandas as pd
 import numpy as np
 import datetime
+import time
 import gtfs_utils as gu
 import gtfstk
 from collections import OrderedDict
@@ -336,6 +337,31 @@ def compute_route_stats_base_partridge(trip_stats_subset,
     
     return g
 
+import itertools
+
+def retry(delays=(0, 1, 5, 30, 180, 600, 3600),
+          exception=Exception):
+    def wrapper(function):
+        def wrapped(*args, **kwargs):
+            problems = []
+            for delay in itertools.chain(delays, [ None ]):
+                try:
+                    return function(*args, **kwargs)
+                except exception as problem:
+                    problems.append(problem)
+                    if delay is None:
+                        logger.error("retryable failed definitely:", problems)
+                        raise
+                    else:
+                        logger.error("retryable failed:", problem,
+                            "-- delaying for %ds" % delay)
+                        time.sleep(delay)
+        return wrapped
+    return wrapper
+
+@retry()
+def s3_download(bucket, key, output_path):
+    bucket.download_file(key, output_path)
 
 def batch_stats(folder=GTFS_FEEDS_PATH, output_folder=OUTPUT_DIR):
     for file in os.listdir(folder):
@@ -390,18 +416,27 @@ def batch_stats_s3(bucket_name = BUCKET_NAME, output_folder = OUTPUT_DIR,
                 logger.info(f'found trip stats result DF gzipped pickle "{trip_stats_output_path}"')
                 ts = pd.read_pickle(trip_stats_output_path, compression='gzip')
             else:
-                if file in os.listdir(gtfs_folder):
+                if os.path.exists(gtfs_folder+file):
                     logger.info(f'found file "{file}" in local folder "{gtfs_folder}"')
                     downloaded = False
                 else:
-                    logger.info(f'starting file download (key="{file}", local path="{gtfs_folder+file}")')
-                    bucket.download_file(file, gtfs_folder+file)
+                    logger.info(f'starting file download with retries (key="{file}", local path="{gtfs_folder+file}")')
+                    s3_download(bucket, file, gtfs_folder+file)
                     logger.debug(f'finished file download (key="{file}", local path="{gtfs_folder+file}")')
                     downloaded = True
                 # TODO: log file size
                 
                 logger.info(f'creating daily partridge feed for file "{gtfs_folder+file}" with date "{date}"')
-                feed = gu.get_partridge_feed_by_date(gtfs_folder+file, date)
+                try:
+                    feed = gu.get_partridge_feed_by_date(gtfs_folder+file, date)
+                except BadZipFile:
+                    logger.error('Bad local zip file', exc_info=True)
+                    logger.info(f'starting file download with retries (key="{file}", local path="{gtfs_folder+file}")')
+                    s3_download(bucket, file, gtfs_folder+file)
+                    logger.debug(f'finished file download (key="{file}", local path="{gtfs_folder+file}")')
+                    downloaded = True
+                    feed = gu.get_partridge_feed_by_date(gtfs_folder+file, date)
+
                 logger.debug(f'finished creating daily partridge feed for file "{gtfs_folder+file}" with date "{date}"')
                 
                 # TODO: add changing zones from archive            
