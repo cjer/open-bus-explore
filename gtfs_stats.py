@@ -466,6 +466,8 @@ def batch_stats_s3(bucket_name = BUCKET_NAME, output_folder = OUTPUT_DIR,
                 os.remove(gtfs_folder+file)
             else:
                 logger.debug(f'keeping gtfs zip file "{gtfs_folder+file}"')
+
+        logger.info(f'finished synchronous gtfs file download and stats computation from s3 bucket {bucket_name}')
     except:
         logger.error('Failed', exc_info=True)
 
@@ -502,9 +504,11 @@ if __name__ == '__main__':
 # 
 # TODO
 # 
-# 1. put this all back into proper documented functions
-# 1. add retries
+# 1. divide and put proper docstrings for functions
 # 1. separate to modules - run, conf, stats, utils...
+# 1. logging - 
+#    1. log __name__ with decorator 
+#    1. add ids to every record - process, file
 # 1. integrate with custom day cutoff
 # 1. add coordinates
 # 1. write tests
@@ -513,6 +517,9 @@ if __name__ == '__main__':
 # 1. add day and night headways and num_trips (maybe noon also)
 # 1. create a function for reading all the pickles and 
 #    make necessary conversions (make it a timeseries good for pandas)
+#    1. times to propper datetimes, date to time period
+#    1. bools to bools
+#    1. add day of week
 # 
 # 
 # 
