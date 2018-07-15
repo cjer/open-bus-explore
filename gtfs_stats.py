@@ -377,8 +377,7 @@ def batch_stats_s3(bucket_name = BUCKET_NAME, output_folder = OUTPUT_DIR,
             logger.info(f'found {len(existing_output_files)} output files in output folder {output_folder}')
         else:
             logger.info(f'creating output folder {output_folder}')
-
-            os.mkdir(output_folder)
+            os.mkdirs(output_folder)
             
         s3 = boto3.resource('s3')
         bucket = s3.Bucket(bucket_name)
