@@ -7,3 +7,5 @@
 /siri/*
 *complaint*
 altair*.json
+*.prof
+*.pyc
