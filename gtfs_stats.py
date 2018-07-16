@@ -507,10 +507,11 @@ if __name__ == '__main__':
 # 1. divide and put proper docstrings for functions
 # 1. separate to modules - run, conf, stats, utils...
 # 1. logging - 
+#    1. logging config and call in every function
 #    1. log __name__ with decorator 
 #    1. add ids to every record - process, file
 # 1. integrate with custom day cutoff
-# 1. add coordinates
+# 1. add more fields for identifying routes and locations - coordinates, details from route_desc
 # 1. write tests
 # 1. add split_directions
 # 1. add time between stops - max, min, mean (using delta)
@@ -520,6 +521,8 @@ if __name__ == '__main__':
 #    1. times to propper datetimes, date to time period
 #    1. bools to bools
 #    1. add day of week
-# 
+# 1. insert to sql
+# 1. Think about creating an archive of pruned GTFS (only 1 day each)
+# 1. mean_headway doesn't mean much when num_trips low (maybe num_trips cutoffs will be enough)
 # 
 # 
