@@ -393,15 +393,24 @@ def batch_stats(folder=GTFS_FEEDS_PATH, output_folder=OUTPUT_DIR):
         rs.to_pickle(output_folder+date_str+'_route_stats.pkl.gz', compression='gzip')
 
 
+def _get_existing_output_files(output_folder):
+    return [(g[0], g[1]) for g in 
+                              (re.match(OUTPUT_FILE_NAME_RE, file).groups() 
+                               for file in os.listdir(output_folder))]
+
+def _get_valid_files_for_stats(bucket, existing_output_files):
+    return [obj.key for obj in bucket.objects.all() 
+                       if re.match(BUCKET_VALID_FILES_RE, obj.key) and 
+                                   obj.key not in [g[0]+'.zip' 
+                                                   for g in existing_output_files 
+                                                   if g[1]=='route_stats']]
 
 def batch_stats_s3(bucket_name = BUCKET_NAME, output_folder = OUTPUT_DIR, 
                    gtfs_folder = GTFS_FEEDS_PATH, delete_downloaded_gtfs_zips=False,
                    write_feed_dangerously = WRITE_FEED_DANGEROUSLY , filtered_feeds_path = FILTERED_FEEDS_PATH):
     try:
         if os.path.exists(output_folder):
-            existing_output_files = [(g[0], g[1]) for g in 
-                                      (re.match(OUTPUT_FILE_NAME_RE, file).groups() 
-                                       for file in os.listdir(output_folder))]
+            existing_output_files = _get_existing_output_files(output_folder)
             logger.info(f'found {len(existing_output_files)} output files in output folder {output_folder}')
         else:
             logger.info(f'creating output folder {output_folder}')
@@ -414,16 +423,10 @@ def batch_stats_s3(bucket_name = BUCKET_NAME, output_folder = OUTPUT_DIR,
 
         s3 = boto3.resource('s3')
         bucket = s3.Bucket(bucket_name)
-
         logger.info(f'connected to S3 bucket {bucket_name}')
 
-        valid_files = [obj.key for obj in bucket.objects.all() 
-                       if re.match(BUCKET_VALID_FILES_RE, obj.key) and 
-                                   obj.key not in [g[0]+'.zip' 
-                                                   for g in existing_output_files 
-                                                   if g[1]=='route_stats']]
+        valid_files = _get_valid_files_for_stats(bucket, existing_output_files)
         logger.info(f'BUCKET_VALID_FILES_RE={BUCKET_VALID_FILES_RE}')
-        
         logger.info(f'found {len(valid_files)} valid files (GTFS) in bucket {bucket_name}')
         logger.debug(f'Files: {valid_files}')
 
