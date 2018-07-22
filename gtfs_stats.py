@@ -53,8 +53,14 @@ def compute_trip_stats_partridge(feed, zones):
     - ``'end_stop_name'``: stop name of the last stop of the trip
     - ``'start_stop_code'``: stop code of the first stop of the trip
     - ``'end_stop_code'``: stop code of the last stop of the trip
+    - ``'start_stop_lat'``: ``start_stop_lat`` of the first stop of the trip
+    - ``'start_stop_lon'``: ``start_stop_lon`` of the first stop of the trip
+    - ``'end_stop_lat'``: ``end_stop_lat`` of the last stop of the trip
+    - ``'end_stop_lon'``: ``end_stop_lon`` of the last stop of the trip
     - ``'start_zone'``: zone name of the first stop of the trip
     - ``'end_zone'``: zone name of the last stop of the trip
+    - ``'num_zones'``:  ``num_zones`` of the first stop of the trip
+    - ``'num_zones_missing'``:  ``num_zones_missing`` of the first stop of the trip
     - ``'is_loop'``: 1 if the start and end stop are less than 400m apart and
       0 otherwise
     - ``'distance'``: distance of the trip in ``feed.dist_units``;
@@ -129,8 +135,14 @@ def compute_trip_stats_partridge(feed, zones):
         d['end_stop_code'] = group['stop_code'].iat[-1]
         d['start_stop_name'] = group['stop_name'].iat[0]
         d['end_stop_name'] = group['stop_name'].iat[-1]
+        d['start_stop_lat'] = group['stop_lat'].iat[0]
+        d['start_stop_lon'] = group['stop_lon'].iat[0]
+        d['end_stop_lat'] = group['stop_lat'].iat[-1]
+        d['end_stop_lon'] = group['stop_lon'].iat[-1]
         d['start_zone'] = group['zone_name'].iat[0]
         d['end_zone'] = group['zone_name'].iat[-1]
+        d['num_zones'] = group.zone_name.nunique()
+        d['num_zones_missing'] = group.zone_name.isnull().sum()
         dist = geometry_by_stop[d['start_stop_id']].distance(
           geometry_by_stop[d['end_stop_id']])
         d['is_loop'] = int(dist < 400)
@@ -222,10 +234,16 @@ def compute_route_stats_base_partridge(trip_stats_subset,
         - ``'mean_trip_duration'``: service_duration/num_trips
         - ``'start_stop_id'``: ``start_stop_id`` of the first trip for the route
         - ``'end_stop_id'``: ``end_stop_id`` of the first trip for the route
+        - ``'start_stop_lat'``: ``start_stop_lat`` of the first trip for the route
+        - ``'start_stop_lon'``: ``start_stop_lon`` of the first trip for the route
+        - ``'end_stop_lat'``: ``end_stop_lat`` of the first trip for the route
+        - ``'end_stop_lon'``: ``end_stop_lon`` of the first trip for the route
         - ``'num_stops'``: ``num_stops`` of the first trip for the route
         - ``'start_zone'``: ``start_zone`` of the first trip for the route
         - ``'end_zone'``: ``end_zone`` of the first trip for the route
-        
+        - ``'num_zones'``:  ``num_zones`` of the first trip for the route
+        - ``'num_zones_missing'``:  ``num_zones_missing`` of the first trip for the route
+
         TODO: actually implement split_directions
         If not ``split_directions``, then remove the
         direction_id column and compute each route's stats,
@@ -294,11 +312,17 @@ def compute_route_stats_base_partridge(trip_stats_subset,
         d['start_stop_id'] = group['start_stop_id'].iat[0]
         d['end_stop_id'] = group['end_stop_id'].iat[0]
 
+        d['start_stop_lat'] = group['start_stop_lat'].iat[0]
+        d['start_stop_lon'] = group['start_stop_lon'].iat[0]
+        d['end_stop_lat'] = group['end_stop_lat'].iat[0]
+        d['end_stop_lon'] = group['end_stop_lon'].iat[0]
+
         d['num_stops'] = group['num_stops'].iat[0]
 
         d['start_zone'] = group['start_zone'].iat[0]
         d['end_zone'] = group['end_zone'].iat[0]
-
+        d['num_zones'] = group['num_zones'].iat[0]
+        d['num_zones_missing'] = group['num_zones_missing'].iat[0]
 
         return pd.Series(d)
     
@@ -323,7 +347,9 @@ def compute_route_stats_base_partridge(trip_stats_subset,
            'peak_num_trips', 'peak_start_time', 'peak_end_time',
            'service_distance', 'service_duration', 'service_speed',
            'mean_trip_distance', 'mean_trip_duration', 'start_stop_id',
-           'end_stop_id', 'num_stops', 'start_zone', 'end_zone', 
+           'end_stop_id', 'start_stop_lat', 'start_stop_lon', 'end_stop_lat', 
+           'end_stop_lon', 'num_stops', 'start_zone', 'end_zone', 
+           'num_zones', 'num_zones_missing'
            ]]
     
     return g
@@ -461,6 +487,7 @@ def batch_stats_s3(bucket_name = BUCKET_NAME, output_folder = OUTPUT_DIR,
             route_stats_output_path = output_folder+date_str+'_route_stats.pkl.gz'
             logger.info(f'saving route stats result DF to gzipped pickle "{route_stats_output_path}"')
             rs.to_pickle(route_stats_output_path, compression='gzip')
+
             if delete_downloaded_gtfs_zips and downloaded:
                 logger.info(f'deleting gtfs zip file "{gtfs_folder+file}"')
                 os.remove(gtfs_folder+file)
@@ -494,7 +521,7 @@ logger = get_logger()
 
 def main():
     logger.info(f'starting batch_stats_s3 with default config')
-    batch_stats_s3()
+    batch_stats_s3(delete_downloaded_gtfs_zips = DELETE_DOWNLOADED_GTFS_ZIPS)
     
 
 if __name__ == '__main__':
