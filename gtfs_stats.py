@@ -505,13 +505,18 @@ if __name__ == '__main__':
 # TODO
 # 
 # 1. divide and put proper docstrings for functions
+# 1. forward fill the gaps
 # 1. separate to modules - run, conf, stats, utils...
 # 1. logging - 
 #    1. logging config and call in every function
+#    1. BUG: logger not logging retries
 #    1. log __name__ with decorator 
 #    1. add ids to every record - process, file
 # 1. integrate with custom day cutoff
-# 1. add more fields for identifying routes and locations - coordinates, details from route_desc
+# 1. add more fields for identifying routes and locations -
+#    details from stop_desc, geocode
+# 1. use daily tariff file to get zones when available
+# 1. run older files with older tariff file
 # 1. write tests
 # 1. add split_directions
 # 1. add time between stops - max, min, mean (using delta)
