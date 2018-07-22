@@ -14,6 +14,7 @@ import datetime
 import time
 import gtfs_utils as gu
 import gtfstk
+import partridge as ptg
 from collections import OrderedDict
 import os
 import re
@@ -392,31 +393,40 @@ def batch_stats(folder=GTFS_FEEDS_PATH, output_folder=OUTPUT_DIR):
         rs.to_pickle(output_folder+date_str+'_route_stats.pkl.gz', compression='gzip')
 
 
+def _get_existing_output_files(output_folder):
+    return [(g[0], g[1]) for g in 
+                              (re.match(OUTPUT_FILE_NAME_RE, file).groups() 
+                               for file in os.listdir(output_folder))]
 
-def batch_stats_s3(bucket_name = BUCKET_NAME, output_folder = OUTPUT_DIR, 
-                   gtfs_folder = GTFS_FEEDS_PATH, delete_downloaded_gtfs_zips=False):
-    try:
-        if os.path.exists(output_folder):
-            existing_output_files = [(g[0], g[1]) for g in 
-                                      (re.match(OUTPUT_FILE_NAME_RE, file).groups() 
-                                       for file in os.listdir(output_folder))]
-            logger.info(f'found {len(existing_output_files)} output files in output folder {output_folder}')
-        else:
-            logger.info(f'creating output folder {output_folder}')
-            os.mkdirs(output_folder)
-            
-        s3 = boto3.resource('s3')
-        bucket = s3.Bucket(bucket_name)
-
-        logger.info(f'connected to S3 bucket {bucket_name}')
-
-        valid_files = [obj.key for obj in bucket.objects.all() 
+def _get_valid_files_for_stats(bucket, existing_output_files):
+    return [obj.key for obj in bucket.objects.all() 
                        if re.match(BUCKET_VALID_FILES_RE, obj.key) and 
                                    obj.key not in [g[0]+'.zip' 
                                                    for g in existing_output_files 
                                                    if g[1]=='route_stats']]
+
+def batch_stats_s3(bucket_name = BUCKET_NAME, output_folder = OUTPUT_DIR, 
+                   gtfs_folder = GTFS_FEEDS_PATH, delete_downloaded_gtfs_zips=False,
+                   write_feed_dangerously = WRITE_FEED_DANGEROUSLY , filtered_feeds_path = FILTERED_FEEDS_PATH):
+    try:
+        if os.path.exists(output_folder):
+            existing_output_files = _get_existing_output_files(output_folder)
+            logger.info(f'found {len(existing_output_files)} output files in output folder {output_folder}')
+        else:
+            logger.info(f'creating output folder {output_folder}')
+            existing_output_files = []
+            os.makedirs(output_folder)
+            
+        if write_feed_dangerously and not os.path.exists(filtered_feeds_path):
+            logger.info(f'creating filtered feeds folder {filtered_feeds_path}')
+            os.makedirs(filtered_feeds_path)
+
+        s3 = boto3.resource('s3')
+        bucket = s3.Bucket(bucket_name)
+        logger.info(f'connected to S3 bucket {bucket_name}')
+
+        valid_files = _get_valid_files_for_stats(bucket, existing_output_files)
         logger.info(f'BUCKET_VALID_FILES_RE={BUCKET_VALID_FILES_RE}')
-        
         logger.info(f'found {len(valid_files)} valid files (GTFS) in bucket {bucket_name}')
         logger.debug(f'Files: {valid_files}')
 
@@ -432,29 +442,38 @@ def batch_stats_s3(bucket_name = BUCKET_NAME, output_folder = OUTPUT_DIR,
                 logger.info(f'found trip stats result DF gzipped pickle "{trip_stats_output_path}"')
                 ts = pd.read_pickle(trip_stats_output_path, compression='gzip')
             else:
-                if os.path.exists(gtfs_folder+file):
-                    logger.info(f'found file "{file}" in local folder "{gtfs_folder}"')
+                if os.path.exists(filtered_feeds_path+file):
+                    logger.info(f'found filtered gtfs feed file "{file}" in local folder "{filtered_feeds_path}"')
                     downloaded = False
+                    logger.info(f'reading filtered gtfs feed file "{filtered_feeds_path + file}" as partridge feed')
+                    feed = ptg.feed(filtered_feeds_path + file)
                 else:
-                    logger.info(f'starting file download with retries (key="{file}", local path="{gtfs_folder+file}")')
-                    s3_download(bucket, file, gtfs_folder+file)
-                    logger.debug(f'finished file download (key="{file}", local path="{gtfs_folder+file}")')
-                    downloaded = True
-                # TODO: log file size
-                
-                logger.info(f'creating daily partridge feed for file "{gtfs_folder+file}" with date "{date}"')
-                try:
-                    feed = gu.get_partridge_feed_by_date(gtfs_folder+file, date)
-                except BadZipFile:
-                    logger.error('Bad local zip file', exc_info=True)
-                    logger.info(f'starting file download with retries (key="{file}", local path="{gtfs_folder+file}")')
-                    s3_download(bucket, file, gtfs_folder+file)
-                    logger.debug(f'finished file download (key="{file}", local path="{gtfs_folder+file}")')
-                    downloaded = True
-                    feed = gu.get_partridge_feed_by_date(gtfs_folder+file, date)
+                    if os.path.exists(gtfs_folder+file):
+                        logger.info(f'found gtfs feed file "{file}" in local folder "{gtfs_folder}"')
+                        downloaded = False
+                    else:
+                        logger.info(f'starting file download with retries (key="{file}", local path="{gtfs_folder+file}")')
+                        s3_download(bucket, file, gtfs_folder+file)
+                        logger.debug(f'finished file download (key="{file}", local path="{gtfs_folder+file}")')
+                        downloaded = True
+                    # TODO: log file size
+                    
+                    logger.info(f'creating daily partridge feed for file "{gtfs_folder+file}" with date "{date}"')
+                    try:
+                        feed = gu.get_partridge_feed_by_date(gtfs_folder+file, date)
+                    except BadZipFile:
+                        logger.error('Bad local zip file', exc_info=True)
+                        logger.info(f'starting file download with retries (key="{file}", local path="{gtfs_folder+file}")')
+                        s3_download(bucket, file, gtfs_folder+file)
+                        logger.debug(f'finished file download (key="{file}", local path="{gtfs_folder+file}")')
+                        downloaded = True
+                        feed = gu.get_partridge_feed_by_date(gtfs_folder+file, date)
+                    logger.debug(f'finished creating daily partridge feed for file "{gtfs_folder+file}" with date "{date}"')
+                    
+                    if write_feed_dangerously:
+                        logger.info(f'writing filtered feed based on daily partridge feed to "{filtered_feeds_path+file}"')
+                        gu.write_feed_dangerously(feed, filtered_feeds_path+file)    
 
-                logger.debug(f'finished creating daily partridge feed for file "{gtfs_folder+file}" with date "{date}"')
-                
                 # TODO: add changing zones from archive            
                 logger.info(f'creating zones DF from "{LOCAL_TARIFF_PATH}"')
                 zones = gu.get_zones_df(LOCAL_TARIFF_PATH)
