@@ -52,9 +52,9 @@ def read_busiest_date(path):
     return date, service_ids
 
 
-def read_service_ids_by_date(path, encoding = None):
+def read_service_ids_by_date(path):
     '''Find all service identifiers by date'''
-    feed = raw_feed(path, encoding = encoding)
+    feed = raw_feed(path)
     return _service_ids_by_date(feed)
 
 

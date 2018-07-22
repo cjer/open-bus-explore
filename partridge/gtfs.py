@@ -16,14 +16,12 @@ def read_file(filename):
 
 
 class feed(object):
-    def __init__(self, path, config=None, view=None, encoding=None):
+    def __init__(self, path, config=None, view=None):
         self.path = path
         self.is_dir = os.path.isdir(self.path)
         self.config = default_config() if config is None else config
         self.view = {} if view is None else view
         self.zmap = {}
-        self.encoding = encoding
-        print (encoding)
 
         assert os.path.isfile(self.path) or self.is_dir, \
             'File or path not found: {}'.format(self.path)
@@ -141,6 +139,7 @@ class feed(object):
         """
         Yield a pandas DataFrame iterator for the given file.
         """
+        print(filename)
         with self._io_adapter(self.zmap[filename]) as result:
             iowrapper, encoding = result
             try:
@@ -159,19 +158,13 @@ class feed(object):
         """
         if self.is_dir:
             with open(fpath, 'rb') as iowrapper:
-                if self.encoding is None:
-                    encoding = detect_encoding(iowrapper)
-                else: 
-                    encoding = self.encoding
+                encoding = detect_encoding(iowrapper)
                 iowrapper.seek(0)  # Rewind to the beginning of the file
                 yield iowrapper, encoding
         else:
             with ZipFile(self.path) as zipreader:
-                if self.encoding is not None:
-                    encoding = self.encoding
-                else:
-                    with zipreader.open(fpath, 'r') as zfile:
-                        encoding = detect_encoding(zfile)
+                with zipreader.open(fpath, 'r') as zfile:
+                    encoding = detect_encoding(zfile)
                 with zipreader.open(fpath, 'r') as zfile:
                     with io.TextIOWrapper(zfile, encoding) as iowrapper:
                         yield iowrapper, encoding
@@ -209,6 +202,5 @@ class feed(object):
 
 # No pruning or type coercion
 class raw_feed(feed):
-    def __init__(self, path, encoding = None):
-        super(raw_feed, self).__init__(path, config=empty_config(), encoding = encoding)
-
+    def __init__(self, path):
+        super(raw_feed, self).__init__(path, config=empty_config())
