@@ -106,7 +106,7 @@ def compute_trip_stats_partridge(feed, zones):
         .merge(feed.agency[['agency_id', 'agency_name']], how='left', on='agency_id')
         .merge(feed.stop_times)
         .merge(feed.stops[['stop_id', 'stop_name', 'stop_lat', 'stop_lon', 'stop_code']])
-        .merge(zones)
+        .merge(zones, how='left')
         .sort_values(['trip_id', 'stop_sequence'])
         #.assign(departure_time=lambda x: x['departure_time'].map(
         #    hp.timestr_to_seconds)
