@@ -86,7 +86,7 @@ def get_zones_df(local_tariff_zip_path):
     return zones
 
 def get_partridge_feed_by_date(zip_path, date):
-    service_ids_by_date = ptg.read_service_ids_by_date(zip_path, encoding='utf-8')
+    service_ids_by_date = ptg.read_service_ids_by_date(zip_path)#, encoding='utf-8')
     service_ids = service_ids_by_date[date]
 
     feed = ptg.feed(zip_path, view={
@@ -94,7 +94,7 @@ def get_partridge_feed_by_date(zip_path, date):
             'service_id': service_ids,
             },
         },
-        encoding='utf-8' # CUSTOM VERSION, NOT YET PUSHED
+        #encoding='utf-8' # CUSTOM VERSION, NOT YET PUSHED
     )
     return feed
     
@@ -144,6 +144,8 @@ def get_tidy_feed_df(feed, extra_merges, extra_fields=None):
     
     return accum_df
 
+def write_feed_dangerously(feed, outpath):
+    return ptg.writers.write_feed_dangerously(feed, outpath)
 
 
 ############
