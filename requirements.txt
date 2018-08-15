@@ -7,3 +7,5 @@ networkx
 partridge
 peartree
 gtfstk
+boto3
+tqdm
