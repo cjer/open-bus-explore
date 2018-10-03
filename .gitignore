@@ -9,3 +9,4 @@
 altair*.json
 *.prof
 *.pyc
+dask-worker-space

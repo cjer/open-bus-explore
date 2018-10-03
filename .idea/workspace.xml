@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b9fa651-010e-42c2-a4d5-49c755cd79f4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/gtfs_utils/download_daily_ftp_files.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gtfs_utils/gtfs_stats.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gtfs_utils/gtfs_stats_conf.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gtfs_utils/gtfs_utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats_conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats_conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openbus_16_gtfs_stats_usage.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/openbus_16_gtfs_stats_usage.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partridge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partridge/__version__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partridge/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partridge/gtfs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partridge/parsers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partridge/readers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partridge/utilities.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partridge/writers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zones.html" beforeDir="false" afterPath="$PROJECT_DIR$/zones.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zones_separate.html" beforeDir="false" afterPath="$PROJECT_DIR$/zones_separate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openbus_18_haifa_tlv_train_hishmul_boosts.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/openbus_18_haifa_tlv_train_hishmul_boosts.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,33 +16,46 @@
     <session id="634411662">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.12" value="2" />
+          <entry key="project.open.time.13" value="2" />
+          <entry key="project.open.time.19" value="1" />
+          <entry key="project.open.time.45" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="421" />
+          <entry key="Python Console" value="1" />
+          <entry key="cfg" value="2" />
+          <entry key="gitignore" value="34" />
+          <entry key="py" value="680" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="421" />
+          <entry key="PLAIN_TEXT" value="36" />
+          <entry key="Python" value="681" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="gitignore" value="1" />
+          <entry key="cfg" value="1" />
+          <entry key="gitignore" value="2" />
           <entry key="md" value="2" />
-          <entry key="py" value="3" />
+          <entry key="py" value="8" />
+          <entry key="rst" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Markdown" value="2" />
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="3" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Python" value="8" />
+          <entry key="ReST" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -68,19 +65,36 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats_conf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+            <state relative-caret-position="374">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py">
+        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/README.rst">
+          <provider selected="true" editor-type-id="restructured-text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-391">
-              <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+            <state relative-caret-position="629">
+              <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
               <folding>
-                <element signature="e#309#328#0" expanded="true" />
+                <element signature="e#71#80#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,11 +103,61 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2261">
-              <caret line="133" selection-start-line="133" selection-end-line="142" selection-end-column="6" />
+            <state relative-caret-position="2244">
+              <caret line="138" column="35" selection-start-line="138" selection-start-column="35" selection-end-line="138" selection-end-column="35" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1533594814180" expanded="true" signature="4705:4842" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/__version__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="20" selection-start-column="20" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/tests/test_gtfs_stats.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="3" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/tests/test_gtfs_stats_conf.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="13" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/open-bus/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4539">
+              <caret line="281" column="8" selection-start-line="281" selection-start-column="8" selection-end-line="281" selection-end-column="8" />
+              <folding>
+                <element signature="e#309#328#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,16 +167,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>s3_download</find>
-      <find>bucket</find>
-      <find>delete_downloaded_gtfs_zips</find>
       <find>count_ac</find>
       <find>get_max_runs</find>
       <find>active_t</find>
       <find>s3_dow</find>
       <find>handle_gtfs_date</find>
-      <find>handle_gtfs_file</find>
-      <find>get_forward_fill_dict</find>
       <find>in bucket</find>
       <find>len(</find>
       <find>in buck</find>
@@ -130,6 +189,14 @@
       <find>retry</find>
       <find>write_fee</find>
       <find>write_</find>
+      <find>handle_gtfs_file</find>
+      <find>missing</find>
+      <find>dict</find>
+      <find>get_valid_file_dates_dict</find>
+      <find>get_forward_fill_dict</find>
+      <find>test</find>
+      <find>compute_ro</find>
+      <find>seconds</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -158,14 +225,21 @@
         <option value="$PROJECT_DIR$/open-bus/gtfs_utils/gtfs_utils/gtfs_stats.py" />
         <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_utils.py" />
         <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py" />
+        <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/tests/test_gtfs_stats_conf.py" />
+        <option value="$PROJECT_DIR$/open-bus/.gitignore" />
+        <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/tests/test_gtfs_stats.py" />
+        <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/setup.cfg" />
+        <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/__init__.py" />
+        <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/setup.py" />
+        <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/__version__.py" />
         <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats_conf.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-6" />
-    <option name="width" value="1378" />
-    <option name="height" value="878" />
+    <option name="x" value="-4" />
+    <option name="width" value="690" />
+    <option name="height" value="440" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -206,6 +280,14 @@
               <item name="gtfs_utils" type="462c0819:PsiDirectoryNode" />
               <item name="gtfs_utils" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="open-bus-explore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="open-bus-explore" type="462c0819:PsiDirectoryNode" />
+              <item name="open-bus" type="462c0819:PsiDirectoryNode" />
+              <item name="gtfs" type="462c0819:PsiDirectoryNode" />
+              <item name="gtfs_utils" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -229,7 +311,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.gtfs_stats (1)">
+  <component name="RunManager" selected="Python tests.pytest in tests">
     <configuration name="gtfs_stats (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="open-bus-explore" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -302,14 +384,31 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest in tests" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="open-bus-explore" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/tests&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.gtfs_stats" />
       <item itemvalue="Python tests.py.test in tests" />
       <item itemvalue="Python tests.py.test for test_gtfs_stats.test_parse_date" />
       <item itemvalue="Python.gtfs_stats (1)" />
+      <item itemvalue="Python tests.pytest in tests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest in tests" />
         <item itemvalue="Python.gtfs_stats (1)" />
         <item itemvalue="Python tests.py.test in tests" />
         <item itemvalue="Python tests.py.test for test_gtfs_stats.test_parse_date" />
@@ -331,9 +430,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="py_test_in_tests - 2018.07.23 at 17h 38m 19s.xml">
-      <configuration name="py.test in tests" configurationId="tests" />
-    </history-entry>
     <history-entry file="py_test_in_tests - 2018.07.23 at 17h 42m 45s.xml">
       <configuration name="py.test in tests" configurationId="tests" />
     </history-entry>
@@ -352,25 +448,36 @@
     <history-entry file="py_test_in_tests - 2018.07.25 at 19h 28m 24s.xml">
       <configuration name="py.test in tests" configurationId="tests" />
     </history-entry>
+    <history-entry file="pytest_in_tests - 2018.08.27 at 20h 38m 56s.xml">
+      <configuration name="pytest in tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_tests - 2018.08.27 at 20h 51m 47s.xml">
+      <configuration name="pytest in tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_tests - 2018.08.27 at 21h 14m 09s.xml">
+      <configuration name="pytest in tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_tests - 2018.08.27 at 21h 16m 27s.xml">
+      <configuration name="pytest in tests" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1096" height="1896" extended-state="6" />
-    <editor active="true" />
+    <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16729678" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11747212" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.4019608" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4008208" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39978212" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.26675788" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32897604" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.36165577" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3611491" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -483,21 +590,9 @@ for file_date, stats_date in zip(date_df.values, date_df.index):
     <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/src/gtfs_stats_conf.py" />
     <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/src/__version__.py" />
     <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/src/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/tests/test_gtfs_stats_conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/tests/test_gtfs_stats_conf.py" />
     <entry file="file://$PROJECT_DIR$/gtfstk-cjer/gtfstk/helpers.py" />
-    <entry file="file://$PROJECT_DIR$/open-bus/requirments.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="5" selection-end-line="3" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/requirments.txt" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -512,90 +607,15 @@ for file_date, stats_date in zip(date_df.values, date_df.index):
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/gtfs_utils/__version__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20" selection-start-column="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/gtfs_utils/gtfs_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/tests/test_gtfs_stats.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="15" selection-start-column="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/gtfs_utils/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-          <folding>
-            <element signature="e#71#80#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/gtfs_utils/gtfs_stats_conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="22" selection-start-line="22" selection-end-line="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/gtfs_utils/gtfs_stats.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="812" column="23" lean-forward="true" selection-start-line="812" selection-start-column="23" selection-end-line="812" selection-end-column="23" />
-          <folding>
-            <element signature="n#!!doc" />
-            <element signature="e#309#328#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/doc/working_with_SIRI.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/doc/working_with_GTFS.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor>
-            <caret selection-end-line="95" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/gtfs_utils/__version__.py" />
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/gtfs_utils/gtfs_utils.py" />
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/tests/test_gtfs_stats.py" />
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/gtfs_utils/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/setup.py" />
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/gtfs_utils/gtfs_stats_conf.py" />
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs_utils/gtfs_utils/gtfs_stats.py" />
+    <entry file="file://$PROJECT_DIR$/open-bus/doc/working_with_SIRI.md" />
+    <entry file="file://$PROJECT_DIR$/open-bus/doc/working_with_GTFS.md" />
     <entry file="file://$USER_HOME$/Anaconda3/envs/partridge/Lib/site-packages/boto3/resources/collection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="642">
@@ -603,31 +623,91 @@ for file_date, stats_date in zip(date_df.values, date_df.index):
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_utils.py">
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/setup.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2261">
-          <caret line="133" selection-start-line="133" selection-end-line="142" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <marker date="1533594814180" expanded="true" signature="4705:4842" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-          <folding>
-            <element signature="e#309#328#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="1" column="11" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats_conf.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/README.rst">
+      <provider selected="true" editor-type-id="restructured-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+          <folding>
+            <element signature="e#71#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2244">
+          <caret line="138" column="35" selection-start-line="138" selection-start-column="35" selection-end-line="138" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/__version__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="20" selection-start-column="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/tests/test_gtfs_stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="3" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/tests/test_gtfs_stats_conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="13" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4539">
+          <caret line="281" column="8" selection-start-line="281" selection-start-column="8" selection-end-line="281" selection-end-column="8" />
+          <folding>
+            <element signature="e#309#328#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
