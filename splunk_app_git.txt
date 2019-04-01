@@ -1,0 +1,8 @@
+git pull
+cp -R /opt/splunk/etc/apps/open-bus splunk
+sudo chmod -R g+rwX .
+sudo chown -R dan .
+find . -type d -exec chmod g+s '{}' +
+git add --all
+git commit -m "add data exporter dashboard"
+git push origin master

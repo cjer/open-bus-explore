@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="0b9fa651-010e-42c2-a4d5-49c755cd79f4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openbus_00_getting_started.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/openbus_00_getting_started.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openbus_16_gtfs_stats_usage.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/openbus_16_gtfs_stats_usage.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openbus_18_haifa_tlv_train_hishmul_boosts.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/openbus_18_haifa_tlv_train_hishmul_boosts.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openbus_17_line_to_cluster.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/openbus_17_line_to_cluster.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openbus_20_route_desc.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/openbus_20_route_desc.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openbus_21_siri.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/openbus_21_siri.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openbus_22_siri_distributed.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/openbus_22_siri_distributed.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,70 +17,8 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="634411662">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="7" />
-          <entry key="project.open.time.12" value="2" />
-          <entry key="project.open.time.13" value="2" />
-          <entry key="project.open.time.19" value="1" />
-          <entry key="project.open.time.45" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="9" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="Python Console" value="1" />
-          <entry key="cfg" value="2" />
-          <entry key="gitignore" value="34" />
-          <entry key="py" value="680" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="PLAIN_TEXT" value="36" />
-          <entry key="Python" value="681" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="cfg" value="1" />
-          <entry key="gitignore" value="2" />
-          <entry key="md" value="2" />
-          <entry key="py" value="8" />
-          <entry key="rst" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="Markdown" value="2" />
-          <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="8" />
-          <entry key="ReST" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats_conf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/README.rst">
-          <provider selected="true" editor-type-id="restructured-text-editor" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/setup.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -103,10 +46,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2244">
-              <caret line="138" column="35" selection-start-line="138" selection-start-column="35" selection-end-line="138" selection-end-column="35" />
+            <state relative-caret-position="3383">
+              <caret line="205" column="26" selection-start-line="205" selection-start-column="26" selection-end-line="205" selection-end-column="26" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats_conf.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="315" column="47" selection-start-line="315" selection-start-column="47" selection-end-line="315" selection-end-column="47" />
+              <folding>
+                <element signature="e#309#328#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,30 +119,14 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4539">
-              <caret line="281" column="8" selection-start-line="281" selection-start-column="8" selection-end-line="281" selection-end-column="8" />
-              <folding>
-                <element signature="e#309#328#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/open-bus/gtfs/retriever/s3_wrapper.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>count_ac</find>
-      <find>get_max_runs</find>
-      <find>active_t</find>
-      <find>s3_dow</find>
-      <find>handle_gtfs_date</find>
-      <find>in bucket</find>
-      <find>len(</find>
-      <find>in buck</find>
-      <find>file_dates_dict</find>
       <find>unit</find>
       <find>desc=</find>
       <find>get_</find>
@@ -193,11 +144,23 @@
       <find>missing</find>
       <find>dict</find>
       <find>get_valid_file_dates_dict</find>
-      <find>get_forward_fill_dict</find>
       <find>test</find>
       <find>compute_ro</find>
       <find>seconds</find>
+      <find>compute_route_s</find>
+      <find>start_stop_name</find>
+      <find>geometry_by_stop</find>
+      <find>city</find>
+      <find>stop_desc_ci</find>
+      <find>os.path.join</find>
+      <find>TARIFF</find>
+      <find>os.path</find>
+      <find>tariff</find>
+      <find>get_forward_fill_dict</find>
     </findStrings>
+    <replaceStrings>
+      <replace>join</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -224,7 +187,6 @@
         <option value="$PROJECT_DIR$/open-bus/gtfs_utils/setup.py" />
         <option value="$PROJECT_DIR$/open-bus/gtfs_utils/gtfs_utils/gtfs_stats.py" />
         <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_utils.py" />
-        <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py" />
         <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/tests/test_gtfs_stats_conf.py" />
         <option value="$PROJECT_DIR$/open-bus/.gitignore" />
         <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/tests/test_gtfs_stats.py" />
@@ -232,14 +194,17 @@
         <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/__init__.py" />
         <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/setup.py" />
         <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/__version__.py" />
+        <option value="$PROJECT_DIR$/open-bus/gtfs/retriever/s3_wrapper.py" />
         <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats_conf.py" />
+        <option value="$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-4" />
-    <option name="width" value="690" />
-    <option name="height" value="440" />
+    <option name="x" value="12" />
+    <option name="y" value="18" />
+    <option name="width" value="2556" />
+    <option name="height" value="1356" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -247,6 +212,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -280,19 +246,10 @@
               <item name="gtfs_utils" type="462c0819:PsiDirectoryNode" />
               <item name="gtfs_utils" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="open-bus-explore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="open-bus-explore" type="462c0819:PsiDirectoryNode" />
-              <item name="open-bus" type="462c0819:PsiDirectoryNode" />
-              <item name="gtfs" type="462c0819:PsiDirectoryNode" />
-              <item name="gtfs_utils" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -401,9 +358,9 @@
     </configuration>
     <list>
       <item itemvalue="Python.gtfs_stats" />
+      <item itemvalue="Python.gtfs_stats (1)" />
       <item itemvalue="Python tests.py.test in tests" />
       <item itemvalue="Python tests.py.test for test_gtfs_stats.test_parse_date" />
-      <item itemvalue="Python.gtfs_stats (1)" />
       <item itemvalue="Python tests.pytest in tests" />
     </list>
     <recent_temporary>
@@ -463,8 +420,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11747212" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.40669146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -474,7 +432,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.26675788" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.07786885" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32897604" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3611491" />
@@ -501,9 +459,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -630,13 +585,6 @@ for file_date, stats_date in zip(date_df.values, date_df.index):
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats_conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/README.rst">
       <provider selected="true" editor-type-id="restructured-text-editor" />
     </entry>
@@ -662,10 +610,20 @@ for file_date, stats_date in zip(date_df.values, date_df.index):
     </entry>
     <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2244">
-          <caret line="138" column="35" selection-start-line="138" selection-start-column="35" selection-end-line="138" selection-end-column="35" />
+        <state relative-caret-position="3383">
+          <caret line="205" column="26" selection-start-line="205" selection-start-column="26" selection-end-line="205" selection-end-column="26" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats_conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -701,10 +659,13 @@ for file_date, stats_date in zip(date_df.values, date_df.index):
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/open-bus/gtfs/retriever/s3_wrapper.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/open-bus/gtfs/gtfs_utils/gtfs_utils/gtfs_stats.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4539">
-          <caret line="281" column="8" selection-start-line="281" selection-start-column="8" selection-end-line="281" selection-end-column="8" />
+        <state relative-caret-position="260">
+          <caret line="315" column="47" selection-start-line="315" selection-start-column="47" selection-end-line="315" selection-end-column="47" />
           <folding>
             <element signature="e#309#328#0" expanded="true" />
           </folding>
